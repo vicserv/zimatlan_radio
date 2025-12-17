@@ -1,21 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Paleta "Estilo Oaxaqueño" (Opción C) */
+  --zim-cream: #fff8e1; /* Fondo suave */
+  --zim-orange: #e84e1b; /* Encabezados / Energía */
+  --zim-blue: #004b8d; /* Estructura / Menu */
+  --zim-green: #86c30d; /* Botones / Acción */
+  --zim-gold: #d4af37; /* Detalles Premium */
+  --zim-text: #333333; /* Texto lectura (Gris oscuro) */
+
+  /* Asignación semántica */
+  --background: var(--zim-cream);
+  --foreground: var(--zim-text);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Colores de Marca Disponibles en Tailwind */
+  --color-zim-cream: var(--zim-cream);
+  --color-zim-orange: var(--zim-orange);
+  --color-zim-blue: var(--zim-blue);
+  --color-zim-green: var(--zim-green);
+  --color-zim-gold: var(--zim-gold);
+
+  /* Fuentes */
+  --font-sans: var(--font-roboto);
+  --font-display: var(--font-montserrat); /* Para Títulos */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Mantenemos el estilo cálido incluso en "dark mode" por ahora,
+       o podríamos invertirlo ligeramente, pero para respetar la petición
+       "Estilo Oaxaqueño" (que se basa en el beige), forzaremos la base cálida
+       o usaremos un azul muy oscuro si el usuario lo prefiere después.
+       Por ahora, usaré una versión oscura del azul como fondo para no deslumbrar 
+       si alguien tiene modo oscuro forzado. */
+    --background: #001f3f; /* Azul noche profundo */
+    --foreground: #fff8e1; /* Texto crema */
   }
 }
 

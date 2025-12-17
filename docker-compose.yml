@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Next.js Frontend
+  next-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # URL for the client browser to connect to the socket server. 
+        # For local Docker testing, localhost:3001 works if ports are exposed.
+        # For real production, change this to your domain, e.g. https://chat.mysite.com
+        NEXT_PUBLIC_SOCKET_URL: http://localhost:3001 
+    restart: always
+    ports:
+      - "3000:3000"
+    networks:
+      - radio-network
+    depends_on:
+      - chat-server
+
+  # Chat Backend
+  chat-server:
+    build: ./chat-server
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - PORT=3001
+      # In production, likely restrict this to your domain
+      - CORS_ORIGIN=* 
+    depends_on:
+      - redis
+    networks:
+      - radio-network
+
+  # Redis for state/presence
+  redis:
+    image: redis:alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - radio-network
+
+networks:
+  radio-network:
+    driver: bridge
+
+volumes:
+  redis_data:
