@@ -17,6 +17,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://lanuevazimatlan1067fm.com.mx"),
   title: "Radio La Nueva - Zimatlán 106.7 FM | La Frecuencia Que Manda",
   description:
     "Escucha La Nueva Zimatlán 106.7 FM en vivo. La mejor música regional, noticias y entretenimiento desde Zimatlán de Álvarez, Oaxaca. Conéctate y envía tus saludos.",
