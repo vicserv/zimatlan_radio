@@ -6,7 +6,7 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const io = new Server(PORT, {
   cors: {
-    origin: "*", // En producción, restringir a tu dominio
+    origin: process.env.CORS_ORIGIN || "*",
     methods: ["GET", "POST"]
   }
 });
