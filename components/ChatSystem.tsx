@@ -19,7 +19,8 @@ import {
   animals,
 } from "unique-names-generator";
 
-const SOCKET_URL = "http://localhost:3001"; // Ajustar para prod
+const SOCKET_URL =
+  process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:3001";
 
 interface ChatMessage {
   id: number;
