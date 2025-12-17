@@ -9,7 +9,7 @@ services:
       args:
         # URL for the client browser to connect to the socket server. 
         # Using port 4011 as mapped below for the backend.
-        NEXT_PUBLIC_SOCKET_URL: http://localhost:4011 
+        NEXT_PUBLIC_SOCKET_URL: https://websocket.lanuevazimatlan1067fm.com.mx/ 
     restart: always
     ports:
       - "4010:3000"
